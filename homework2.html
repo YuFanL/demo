@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+  <html>  
+    <head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <title>qq登录</title>   
+    </head>  
+    <style>
+    	*{
+    		background-color: white;
+    	}
+    	img{
+   				width:200px;
+   				height:200px;
+   				padding-top: 150px;
+   				padding-left: 100px;
+   				background-color: white;
+       	}
+       	button.ui-btn{
+       		width:50%;
+     			margin-left: 95px;.
+       	}
+    </style>
+    <body>  
+    		<div>
+    		<img src="reba3.jpg"/>
+    	</div>
+    		<input type="number" id="name" placeholder="qq号"/>
+    		<input type="password" id="password" placeholder="密码"/>
+    		<button>登录</button>
+    </body>  
+    <script>
+ 
+	$('#btn').click(function(){
+		var name=$('#name').val();
+ 		var pwd=$('#password').val();
+		$.ajax({
+			type:'get',
+			url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+			data:{status:'login',userID:name,password:pwd},
+			success:function(data){
+				if(data == 0){
+					alert('用户名不存在！');
+				}
+				else if(data == 2){
+					alert('密码错误！');
+				}
+				else{
+					$(location).prop('href', 'http://htmlpreview.github.io/?https://github.com/YuFanL/demo/blob/master/homework3.html');
+				}
+		
+			}
+
+		})
+
+	})
+	
+	
+</script>
+</html>  

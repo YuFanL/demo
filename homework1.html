@@ -1,0 +1,68 @@
+<!DOCTYPE html>  
+  <html>  
+    <head>  
+    <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <title>qq</title>   
+    </head>  
+    <style>
+    	*{
+    		background-color: white;
+    	}
+    	img{
+   				width:200px;
+   				height:200px;
+   				padding-top: 150px;
+   				padding-left: 100px;
+   				background-color: white;
+       	}
+       	button.ui-btn{
+       		width:50%;
+     			margin-left: 95px;.
+       	}
+       	a{
+       		text-decoration: none;
+       	}
+    </style>
+    <body>
+    	<div>
+    		<img src="reba3.jpg"/>
+    	</div>
+    		<input type="text" id="name" placeholder="名称"/>
+    		<input type="password" id="password" placeholder="密码"/>
+    		<input type="password" placeholder="确认密码"/>
+    		<button id="btn"><a href="#" style="color:grey;">注册</a></button>
+    </body>  
+    <script>
+ 
+	$('#btn').click(function(){
+		var name=$('#name').val();
+ 		var pwd=$('#password').val();
+		$.ajax({
+			type:'get',
+			url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+			data:{status:'register',userID:name,password:pwd},
+			success:function(data){
+				if(data == 0){
+					alert('用户名重名！');
+				}
+				else if(data == 2){
+					alert('数据库错误');
+				}
+				else{
+					alert("昵称：" + $('#name').val()+ "密码："+ $('#password').val());
+					$(location).prop('href', 'http://htmlpreview.github.io/?https://github.com/YuFanL/demo/blob/master/homework2.html');
+				}
+		
+			}
+
+		})
+
+	})
+	
+	
+</script>
+</html>  
